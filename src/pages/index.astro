@@ -5,23 +5,21 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <main class='min-h-screen grid place-content-center'>
     <div class='bg-white rounded-2xl w-80 p-4 flex flex-col gap-4'>
-      <picture>
-        <img
-          class='rounded-lg overflow-hidden'
-          src='/image-qr-code.png'
-          alt='qr-code'
-        />
-      </picture>
+      <div
+        id='qr-code-result'
+        class='bg-[#3685FF] rounded-lg overflow-hidden p-4'
+      >
+      </div>
 
-      <h1 class='font-bold text-base text-left'>
-        Enter URL to create QR code:
-      </h1>
-      <form>
-        <input
-          class='w-full border-2 px-4 py-2 rounded-full'
-          type='url'
-          placeholder='https:// ...'
-        />
+      <form id='qr-code-form'>
+        <label class='font-bold text-sm text-left'>
+          <span class='block pb-1'>Enter URL to create QR code:</span>
+          <input
+            class='w-full font-normal border-2 px-4 py-2 rounded-full'
+            type='url'
+            placeholder='https:// ...'
+          />
+        </label>
       </form>
 
       <p class='text-xs text-center text-gray-500 px-8'>
@@ -30,3 +28,29 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </main>
 </Layout>
+
+<script>
+  const qrCodeForm = document.querySelector('#qr-code-form');
+  const qrCodeResult = document.querySelector('#qr-code-result');
+
+  qrCodeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const url = new URL(e.target[0].value);
+
+    fetch('/api/generate-qr', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url: url.toString() }),
+    })
+      .then((res) => res.text())
+      .then((svg) => {
+        qrCodeResult.innerHTML = svg;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+</script>
