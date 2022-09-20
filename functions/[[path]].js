@@ -101,7 +101,7 @@ Rename your file to \`[...page].astro\` or customize the param name via the \`pa
 
     const url = new URL(e.target[0].value);
 
-    fetch('http://127.0.0.1:8788/api/generate-qr', {
+    fetch('/api/generate-qr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -122,8 +122,8 @@ Rename your file to \`[...page].astro\` or customize the param name via the \`pa
       </div>
 
       <form id="qr-code-form">
-        <label class="font-bold text-sm text-left">
-          <span class="block pb-1">Enter URL to create QR code:</span>
+        <label class="font-bold text-sm text-center">
+          <span class="block pb-1">Enter URL to create QR code</span>
           <input class="w-full font-normal border-2 px-4 py-2 rounded-full" type="url" placeholder="https:// ...">
         </label>
       </form>
@@ -134,8 +134,8 @@ Rename your file to \`[...page].astro\` or customize the param name via the \`pa
     </div>
   </main>`})}
 
-`}),Wi="C:/proyectos/Vanilla/qr-code/src/pages/index.astro",Ji="",Vi=Object.freeze(Object.defineProperty({__proto__:null,$$metadata:Ii,default:Ot,file:Wi,url:Ji},Symbol.toStringTag,{value:"Module"})),Xi=new Map([["src/pages/index.astro",Vi]]),Yi=[Object.assign({name:"astro:jsx",serverEntrypoint:"astro/jsx/server.js",jsxImportSource:"astro"},{ssr:Li})],Tt=Object.assign($i({adapterName:"@astrojs/cloudflare",routes:[{file:"",links:["assets/index.702d492a.css"],scripts:[{type:"inline",value:`const o=document.querySelector("#qr-code-form"),n=document.querySelector("#qr-code-result");o.addEventListener("submit",t=>{t.preventDefault();const r=new URL(t.target[0].value);fetch("http://127.0.0.1:8788/api/generate-qr",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({url:r.toString()})}).then(e=>e.text()).then(e=>{n.innerHTML=e}).catch(e=>{console.error(e)})});
-`}],routeData:{route:"/",type:"page",pattern:"^\\/$",segments:[],params:[],component:"src/pages/index.astro",pathname:"/",_meta:{trailingSlash:"ignore"}}}],base:"/",markdown:{drafts:!1,syntaxHighlight:"shiki",shikiConfig:{langs:[],theme:"github-dark",wrap:!1},remarkPlugins:[],rehypePlugins:[],remarkRehype:{},extendDefaultPlugins:!1,isAstroFlavoredMd:!1},pageMap:null,renderers:[],entryModules:{"\0@astrojs-ssr-virtual-entry":"_worker.js","/astro/hoisted.js?q=0":"hoisted.3e0b610a.js","astro:scripts/before-hydration.js":""},assets:["/assets/index.702d492a.css","/favicon.svg","/image-qr-code.png"]}),{pageMap:Xi,renderers:Yi}),Gi=void 0,Ki=_t(Tt),Qi=Ki.onRequest,ot="start";ot in tt&&tt[ot](Tt,Gi);export{Qi as onRequest};
+`}),Wi="C:/proyectos/Vanilla/qr-code/src/pages/index.astro",Ji="",Vi=Object.freeze(Object.defineProperty({__proto__:null,$$metadata:Ii,default:Ot,file:Wi,url:Ji},Symbol.toStringTag,{value:"Module"})),Xi=new Map([["src/pages/index.astro",Vi]]),Yi=[Object.assign({name:"astro:jsx",serverEntrypoint:"astro/jsx/server.js",jsxImportSource:"astro"},{ssr:Li})],Tt=Object.assign($i({adapterName:"@astrojs/cloudflare",routes:[{file:"",links:["assets/index.087b49a8.css"],scripts:[{type:"inline",value:`const o=document.querySelector("#qr-code-form"),n=document.querySelector("#qr-code-result");o.addEventListener("submit",t=>{t.preventDefault();const r=new URL(t.target[0].value);fetch("/api/generate-qr",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({url:r.toString()})}).then(e=>e.text()).then(e=>{n.innerHTML=e}).catch(e=>{console.error(e)})});
+`}],routeData:{route:"/",type:"page",pattern:"^\\/$",segments:[],params:[],component:"src/pages/index.astro",pathname:"/",_meta:{trailingSlash:"ignore"}}}],base:"/",markdown:{drafts:!1,syntaxHighlight:"shiki",shikiConfig:{langs:[],theme:"github-dark",wrap:!1},remarkPlugins:[],rehypePlugins:[],remarkRehype:{},extendDefaultPlugins:!1,isAstroFlavoredMd:!1},pageMap:null,renderers:[],entryModules:{"\0@astrojs-ssr-virtual-entry":"_worker.js","/astro/hoisted.js?q=0":"hoisted.1b387b3c.js","astro:scripts/before-hydration.js":""},assets:["/assets/index.087b49a8.css","/favicon.svg","/image-qr-code.png"]}),{pageMap:Xi,renderers:Yi}),Gi=void 0,Ki=_t(Tt),Qi=Ki.onRequest,ot="start";ot in tt&&tt[ot](Tt,Gi);export{Qi as onRequest};
 /**
  * shortdash - https://github.com/bibig/node-shorthash
  *
