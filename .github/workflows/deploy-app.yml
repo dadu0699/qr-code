@@ -18,10 +18,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install Dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.26.1
+          run_install: true
+      - name: Build App
+        run: pnpm run build
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
