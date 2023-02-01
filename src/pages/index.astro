@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout title='QR Code'>
   <main class='min-h-screen grid place-content-center'>
     <div class='bg-white rounded-2xl w-80 p-4 flex flex-col gap-4'>
       <div
@@ -38,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
 
     const url = new URL(e.target[0].value);
 
-    fetch('/api/generate-qr', {
+    fetch('http://127.0.0.1:8788/api/generate-qr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
