@@ -38,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
 
     const url = new URL(e.target[0].value);
 
-    fetch('http://127.0.0.1:8788/api/generate-qr', {
+    fetch('/api/generate-qr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
