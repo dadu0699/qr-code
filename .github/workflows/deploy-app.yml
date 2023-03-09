@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7.26.1
+          version: 7.29.1
           run_install: true
       - name: Build App
         run: pnpm run build
