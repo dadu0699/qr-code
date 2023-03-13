@@ -2,27 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title='QR Code'>
-  <main class='min-h-screen grid place-content-center'>
-    <div class='bg-white rounded-2xl w-80 p-4 flex flex-col gap-4'>
+<Layout title="QR Code">
+  <main class="min-h-screen grid place-content-center">
+    <div class="bg-white rounded-2xl w-80 p-4 flex flex-col gap-4">
       <div
-        id='qr-code-result'
-        class='bg-[#3685FF] rounded-lg overflow-hidden p-4'
+        id="qr-code-result"
+        class="bg-[#3685FF] rounded-lg overflow-hidden p-4"
       >
       </div>
 
-      <form id='qr-code-form'>
-        <label class='font-bold text-sm text-center'>
-          <span class='block pb-1'>Enter URL to create QR code</span>
+      <form id="qr-code-form">
+        <label class="font-bold text-sm text-center">
+          <span class="block pb-1">Enter URL to create QR code</span>
           <input
-            class='w-full font-normal border-2 px-4 py-2 rounded-full'
-            type='url'
-            placeholder='https:// ...'
+            class="w-full font-normal border-2 px-4 py-2 rounded-full"
+            type="url"
+            placeholder="https:// ..."
           />
         </label>
       </form>
 
-      <p class='text-xs text-center text-gray-500 px-8'>
+      <p class="text-xs text-center text-gray-500 px-8">
         Application created in midudev live
       </p>
     </div>
