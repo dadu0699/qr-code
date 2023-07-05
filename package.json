@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "functions": "npx wrangler pages dev ./dist",
-    "publish": "astro build && npx wrangler pages publish dist"
+    "publish": "astro build && npx wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/cloudflare": "6.6.0",
