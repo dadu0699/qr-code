@@ -1,6 +1,5 @@
 # build output
 dist/
-functions/[[path]].js
 
 # generated types
 .astro/
