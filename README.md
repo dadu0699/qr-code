@@ -1,54 +1,74 @@
-# Astro Starter Kit: Basics
+# QR Code Generator
 
-```sh
-npm create astro@latest -- --template basics
+This project serves as a QR code generator specifically designed for URLs.
+
+## Table of Contents
+
+- [Installation and Scripts](#installation-and-scripts)
+- [Technologies Used](#technologies-used)
+- [Server Functions](#server-functions)
+
+## Installation and Scripts
+
+To install the required dependencies, use the command `pnpm install`.
+
+### Available Scripts
+
+Below are the available scripts for this project:
+
+- **dev:** Initializes the application's development environment.
+- **build:** Generates a production-ready version of the application.
+- **preview:** Previews the application within a development environment.
+- **astro:** A command associated with the Astro framework.
+- **functions:** Executes wrangler for pages in development mode.
+- **publish:** Builds the application and deploys the pages using wrangler.
+
+```bash
+# Install dependencies
+pnpm install
+
+# Available scripts
+pnpm dev
+pnpm build
+pnpm preview
+pnpm astro
+pnpm functions
+pnpm publish
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Technologies Used
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Node.js v20:** Platform for JavaScript execution.
+- **pnpm:** Package manager for Node.js.
+- **Astro 3:** Web framework.
+- **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Functions
 
-## 🚀 Project Structure
+The project integrates functions for generating QR codes through specific endpoints located in the functions/api directory.
 
-Inside of your Astro project, you'll see the following folders and files:
+### `generate-qr.js`
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+This file encompasses two functions:
+
+#### `onRequestOptions()`
+
+This function configures necessary headers to allow requests from any origin and enables both POST and OPTIONS methods.
+
+#### `onRequestPost(context)`
+
+Responsible for generating a QR code from a URL provided in the request body. It leverages the qrcode library to craft the QR code image in SVG format, using customizable colors (dark and light). Subsequently, it returns the image as a response with the content type image/svg+xml.
+
+```javascript
+import QRCode from 'qrcode';
+
+export async function onRequestOptions() {
+  // Configuration of headers for OPTIONS requests
+}
+
+export async function onRequestPost(context) {
+  // Handling POST requests to generate QR codes
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+These functions are designed to accommodate CORS requests, thereby permitting access from any origin.
