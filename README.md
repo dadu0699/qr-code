@@ -40,7 +40,7 @@ pnpm publish
 
 - **Node.js v20:** Platform for JavaScript execution.
 - **pnpm:** Package manager for Node.js.
-- **Astro 3:** Web framework.
+- **Astro 4:** Web framework.
 - **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
 
 ## Functions
