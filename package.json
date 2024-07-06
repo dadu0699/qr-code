@@ -12,10 +12,10 @@
     "publish": "astro build && npx wrangler pages deploy dist"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "8.0.0",
-    "@astrojs/tailwind": "5.0.3",
-    "astro": "4.0.4",
+    "@astrojs/cloudflare": "11.0.1",
+    "@astrojs/tailwind": "5.1.0",
+    "astro": "4.11.5",
     "qrcode": "1.5.3",
-    "tailwindcss": "3.3.6"
+    "tailwindcss": "3.4.4"
   }
 }
