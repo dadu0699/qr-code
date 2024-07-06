@@ -1,0 +1,14 @@
+@apiUrl = http://127.0.0.1:8788
+
+
+### Generate QR code in SVG
+# @name qrSVG
+POST {{ apiUrl }}/api/generate-qr
+Content-Type: application/json
+
+{
+    "url": "https://github.com/dadu0699/qr-code"
+}
+
+### SAVE the id of the created product
+@svg  = {{ qrSVG.response.body }}
