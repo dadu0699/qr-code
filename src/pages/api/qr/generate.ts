@@ -1,19 +1,9 @@
+import type { APIRoute } from 'astro';
+
 import QRCode from 'qrcode';
 
-export async function onRequestOptions() {
-  return new Response(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Max-Age': '86400',
-    },
-  });
-}
-
-export async function onRequestPost(context) {
-  const { request } = context;
+// Outputs: /api/qr/generate
+export const POST: APIRoute = async ({ request }) => {
   const { url } = await request.json();
 
   const qrImage = await QRCode.toString(url, {
@@ -34,4 +24,4 @@ export async function onRequestPost(context) {
       'Access-Control-Max-Age': '86400',
     },
   });
-}
+};
