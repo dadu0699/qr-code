@@ -1,9 +1,14 @@
-@apiUrl = http://127.0.0.1:8788
+@apiUrl = http://localhost:4321
+
+
+### Health check
+# @name healthCheck
+GET {{ apiUrl }}/api/health-check.json
 
 
 ### Generate QR code in SVG
 # @name qrSVG
-POST {{ apiUrl }}/api/generate-qr
+POST {{ apiUrl }}/api/qr/generate
 Content-Type: application/json
 
 {
