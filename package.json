@@ -8,18 +8,17 @@
     "build": "wrangler types && astro check && astro build",
     "preview": "wrangler types && astro preview",
     "astro": "astro",
-    "functions": "wrangler pages dev ./dist",
     "publish": "astro build && npx wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/cloudflare": "11.0.1",
     "@astrojs/tailwind": "5.1.0",
-    "astro": "4.11.5",
+    "astro": "4.12.2",
     "qrcode": "1.5.3",
-    "tailwindcss": "3.4.4"
+    "tailwindcss": "3.4.6"
   },
   "devDependencies": {
     "@types/qrcode": "1.5.5",
-    "wrangler": "3.63.1"
+    "wrangler": "3.63.2"
   }
 }
