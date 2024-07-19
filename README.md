@@ -32,7 +32,6 @@ pnpm dev
 pnpm build
 pnpm preview
 pnpm astro
-pnpm functions
 pnpm publish
 ```
 
@@ -43,32 +42,10 @@ pnpm publish
 - **Astro 4:** Web framework.
 - **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
 
-## Functions
+## Server Functions
 
-The project integrates functions for generating QR codes through specific endpoints located in the functions/api directory.
+The project utilizes Astro Server Endpoints (API Routes) for handling server-side operations. The endpoint for generating QR codes is located at `src/pages/api/qr/generate.ts`.
 
-### `generate-qr.js`
+### `generate.ts`
 
-This file encompasses two functions:
-
-#### `onRequestOptions()`
-
-This function configures necessary headers to allow requests from any origin and enables both POST and OPTIONS methods.
-
-#### `onRequestPost(context)`
-
-Responsible for generating a QR code from a URL provided in the request body. It leverages the qrcode library to craft the QR code image in SVG format, using customizable colors (dark and light). Subsequently, it returns the image as a response with the content type image/svg+xml.
-
-```javascript
-import QRCode from 'qrcode';
-
-export async function onRequestOptions() {
-  // Configuration of headers for OPTIONS requests
-}
-
-export async function onRequestPost(context) {
-  // Handling POST requests to generate QR codes
-}
-```
-
-These functions are designed to accommodate CORS requests, thereby permitting access from any origin.
+This file handles the generation of QR codes from a provided URL using the `qrcode` library. It responds with an SVG image of the QR code and supports CORS requests.
