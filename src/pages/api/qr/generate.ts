@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request }) => {
     status: 200,
     headers: {
       'Content-Type': 'image/svg+xml',
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'self',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Max-Age': '86400',
