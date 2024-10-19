@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 
 // Outputs: /api/health-check.json
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async () => {
   return new Response(
     JSON.stringify({ response: 'Service running smoothly' }),
     {
