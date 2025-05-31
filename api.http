@@ -12,7 +12,11 @@ POST {{ apiUrl }}/api/qr/generate
 Content-Type: application/json
 
 {
-    "url": "https://github.com/dadu0699/qr-code"
+    "url": "https://github.com/dadu0699/qr-code",
+    "color": {
+        "dark": "#FFF",
+        "light": "#000"
+    }
 }
 
 ### SAVE the id of the created product

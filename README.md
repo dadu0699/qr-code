@@ -37,9 +37,9 @@ pnpm publish
 
 ## Technologies Used
 
-- **Node.js v20:** Platform for JavaScript execution.
+- **Node.js v22:** Platform for JavaScript execution.
 - **pnpm:** Package manager for Node.js.
-- **Astro 4:** Web framework.
+- **Astro 5:** Web framework.
 - **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
 
 ## Server Functions

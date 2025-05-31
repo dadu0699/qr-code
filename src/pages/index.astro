@@ -3,28 +3,22 @@ import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="QR Code">
-  <main class="min-h-screen grid place-content-center">
-    <div class="bg-white rounded-2xl w-80 p-4 flex flex-col gap-4">
-      <div
-        id="qr-code-result"
-        class="bg-[#3685FF] rounded-lg overflow-hidden p-4"
-      >
-      </div>
+  <main class="grid min-h-screen place-content-center">
+    <div class="flex w-80 flex-col gap-4 rounded-2xl bg-white p-4">
+      <div id="qr-code-result" class="overflow-hidden rounded-lg bg-[#3685FF] p-4"></div>
 
       <form id="qr-code-form">
-        <label class="font-bold text-sm text-center">
+        <label class="text-center text-sm font-bold">
           <span class="block pb-1">Enter URL to create QR code</span>
           <input
-            class="w-full font-normal border-2 px-4 py-2 rounded-full"
+            class="w-full rounded-full border-2 px-4 py-2 font-normal"
             type="url"
             placeholder="https:// ..."
           />
         </label>
       </form>
 
-      <p class="text-xs text-center text-gray-500 px-8">
-        Application created in midudev live
-      </p>
+      <p class="px-8 text-center text-xs text-gray-500">Application created in midudev live</p>
     </div>
   </main>
 </Layout>
@@ -33,10 +27,23 @@ import Layout from '@layouts/Layout.astro';
   const qrCodeForm = document.querySelector('#qr-code-form');
   const qrCodeResult = document.querySelector('#qr-code-result');
 
+  if (!qrCodeForm || !qrCodeResult) {
+    console.error('QR Code form or result element not found');
+    throw new Error('QR Code form or result element not found');
+  }
+
   qrCodeForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const url = new URL(e.target[0].value);
+    const form = e.target as HTMLFormElement | null;
+    const input = form?.querySelector('input[type="url"]') as HTMLInputElement | null;
+
+    if (!input) {
+      console.error('Input element not found');
+      return;
+    }
+
+    const url = new URL(input.value);
 
     fetch('/api/qr/generate', {
       method: 'POST',
