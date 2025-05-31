@@ -24,7 +24,7 @@ const defaultColor = {
 
 // Outputs: /api/qr/generate
 export const POST: APIRoute = async ({ request }) => {
-  const { url } = (await request.json()) as QRCodeRequest;
+  const { url, color } = (await request.json()) as QRCodeRequest;
 
   if (!url) {
     return new Response(JSON.stringify({ error: 'URL is required' }), {
@@ -36,11 +36,12 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  const color = request.headers.get('color')
-    ? JSON.parse(request.headers.get('color') || '{}')
-    : defaultColor;
+  const parsedColor = {
+    dark: color?.dark || defaultColor.dark,
+    light: color?.light || defaultColor.light,
+  };
 
-  const qrImage = await QRCode.toString(url, { type: 'svg', color });
+  const qrImage = await QRCode.toString(url, { type: 'svg', color: parsedColor });
 
   return new Response(qrImage, {
     status: 200,
