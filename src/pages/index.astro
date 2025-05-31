@@ -4,21 +4,25 @@ import Layout from '@layouts/Layout.astro';
 
 <Layout title="QR Code">
   <main class="grid min-h-screen place-content-center">
-    <div class="flex w-80 flex-col gap-4 rounded-2xl bg-white p-4">
-      <div id="qr-code-result" class="overflow-hidden rounded-lg bg-[#3685FF] p-4"></div>
+    <div class="flex w-96 flex-col gap-4 rounded-2xl bg-gray-900 p-4">
+      <div
+        id="qr-code-result"
+        class="mx-auto flex aspect-square w-full items-center justify-center rounded-lg bg-gray-800 p-0.5"
+      >
+      </div>
 
       <form id="qr-code-form">
-        <label class="text-center text-sm font-bold">
-          <span class="block pb-1">Enter URL to create QR code</span>
+        <label class="block text-center text-base font-semibold text-gray-300">
+          <span class="block pb-1.5">Enter URL to create QR code</span>
           <input
-            class="w-full rounded-full border-2 px-4 py-2 font-normal"
+            class="bg-gray-850 w-full rounded-lg border border-gray-700 px-4 py-2 font-normal text-white placeholder-gray-500"
             type="url"
             placeholder="https:// ..."
           />
         </label>
       </form>
 
-      <p class="px-8 text-center text-xs text-gray-500">Application created in midudev live</p>
+      <p class="text-center text-sm text-gray-500">Application created in midudev live</p>
     </div>
   </main>
 </Layout>
@@ -50,7 +54,13 @@ import Layout from '@layouts/Layout.astro';
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ url: url.toString() }),
+      body: JSON.stringify({
+        url: url.toString(),
+        color: {
+          dark: '#FFFFFF',
+          light: '#2B2B2B',
+        },
+      }),
     })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
