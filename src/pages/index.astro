@@ -4,25 +4,40 @@ import Layout from '@layouts/Layout.astro';
 
 <Layout title="QR Code">
   <main class="grid min-h-screen place-content-center">
-    <div class="flex w-96 flex-col gap-4 rounded-2xl bg-gray-900 p-4">
+    <div class="flex w-96 flex-col gap-4 rounded-2xl bg-gray-900 p-4 transition-all duration-300">
       <div
         id="qr-code-result"
         class="mx-auto flex aspect-square w-full items-center justify-center rounded-lg bg-gray-800 p-0.5"
       >
       </div>
 
-      <form id="qr-code-form">
-        <label class="block text-center text-base font-semibold text-gray-300">
-          <span class="block pb-1.5">Enter URL to create QR code</span>
-          <input
-            class="bg-gray-850 w-full rounded-lg border border-gray-700 px-4 py-2 font-normal text-white placeholder-gray-500"
-            type="url"
-            placeholder="https:// ..."
-          />
+      <form id="qr-code-form" class="flex flex-col gap-2">
+        <label class="mt-0.5 flex items-center gap-2 text-sm text-gray-400" for="url">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M14 12a5 5 0 0 1-5 5H7A5 5 0 0 1 7 7h.5m2.5 5a5 5 0 0 1 5-5h2a5 5 0 0 1 0 10h-.5"
+            ></path>
+          </svg>
+
+          Enter URL to create QR code
         </label>
+        <input
+          id="url"
+          type="url"
+          placeholder="https://..."
+          class="bg-gray-850 w-full rounded-md border border-gray-700 px-4 py-2 text-white placeholder-gray-500"
+        />
       </form>
 
-      <p class="text-center text-sm text-gray-500">Application created in midudev live</p>
+      <p class="mt-1 text-center text-sm text-gray-500">Application created in midudev live</p>
     </div>
   </main>
 </Layout>

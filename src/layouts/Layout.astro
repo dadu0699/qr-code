@@ -18,21 +18,7 @@ const { title = 'QR Code' } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="bg-gray-950 text-white">
+  <body class="bg-gray-950 font-sans text-white">
     <slot />
   </body>
 </html>
-
-<style is:global>
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  input::placeholder {
-    color: #999;
-  }
-
-  body {
-    margin: 0;
-  }
-</style>
