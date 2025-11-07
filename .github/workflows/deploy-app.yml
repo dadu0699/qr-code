@@ -2,7 +2,7 @@ name: Deploy App
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths-ignore:
       - '.devcontainer/**'
       - '.vscode/**'
@@ -30,7 +30,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.11.0
-          cache: 'pnpm'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
