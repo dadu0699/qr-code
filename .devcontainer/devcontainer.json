@@ -1,10 +1,10 @@
 {
-  "name": "Node 22 + pnpm + Astro",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:24.11.0",
+  "name": "Node 24 (from Node 22 base) + pnpm + Astro",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "features": {
     "ghcr.io/devcontainers/features/pnpm:1": {}
   },
-  "postCreateCommand": "pnpm install",
+  "postCreateCommand": "bash .devcontainer/setup-node24.sh && pnpm install",
   "forwardPorts": [4321],
   "customizations": {}
 }
