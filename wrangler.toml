@@ -1,2 +1,5 @@
 name = "qr-code"
 compatibility_date = "2024-06-03"
+
+[env]
+production = {}
