@@ -2,11 +2,22 @@ name: Deploy App
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+    paths-ignore:
+      - '.devcontainer/**'
+      - '.vscode/**'
+      - '.github/**'
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-24.04
     name: Deploy App to Cloudflare Pages
     steps:
@@ -19,6 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.11.0
+          cache: 'pnpm'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
