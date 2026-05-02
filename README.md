@@ -39,7 +39,7 @@ pnpm publish
 
 - **Node.js v24:** Platform for JavaScript execution.
 - **pnpm:** Package manager for Node.js.
-- **Astro 5:** Web framework.
+- **Astro 6:** Web framework.
 - **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
 
 ## Server Functions
