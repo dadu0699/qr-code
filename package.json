@@ -7,8 +7,8 @@
     "dev": "wrangler types && astro dev",
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check && astro build",
-    "preview": "astro build && wrangler dev",
-    "publish": "astro build && wrangler deploy --config wrangler.jsonc",
+    "preview": "pnpm build && wrangler dev",
+    "publish": "pnpm build && wrangler deploy",
     "format": "prettier --write .",
     "astro": "astro",
     "wrangler": "wrangler"
