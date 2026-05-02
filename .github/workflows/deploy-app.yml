@@ -49,4 +49,4 @@ jobs:
           wranglerVersion: 4.87.0
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: deploy
+          command: deploy --config wrangler.jsonc
