@@ -46,6 +46,6 @@
       }
     }
   },
-  "mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"],
+  // "mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"],
   "remoteEnv": { "NODE_ENV": "development" }
 }
