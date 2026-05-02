@@ -22,20 +22,23 @@ jobs:
     name: Deploy App to Cloudflare Pages
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 24.11.0
+          node-version-file: '.nvmrc'
+          package-manager-cache: false
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
-          version: 10.20.0
-          run_install: true
+          cache: true
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build App
         run: pnpm run build

@@ -2,6 +2,7 @@
   "name": "qr-code",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "wrangler types && astro dev",
     "start": "wrangler types && astro dev",
