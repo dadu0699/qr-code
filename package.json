@@ -7,15 +7,15 @@
     "dev": "wrangler types && astro dev",
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check && astro build",
-    "preview": "wrangler types && astro preview",
-    "publish": "astro build && wrangler pages deploy dist",
+    "preview": "astro build && wrangler dev",
+    "publish": "astro build && wrangler deploy",
     "format": "prettier --write .",
     "astro": "astro",
     "wrangler": "wrangler"
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",
-    "@astrojs/cloudflare": "12.6.13",
+    "@astrojs/cloudflare": "13.3.0",
     "@tailwindcss/vite": "4.2.4",
     "astro": "6.2.1",
     "qrcode": "1.5.4",
@@ -32,3 +32,4 @@
     "wrangler": "4.87.0"
   }
 }
+
