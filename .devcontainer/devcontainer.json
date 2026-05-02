@@ -1,14 +1,51 @@
 {
-  "name": "Node 24 + pnpm + Astro",
+  "name": "Node 24 + pnpm + Astro + Wrangler",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "24",
-      "installPnpm": true,
-      "installYarn": true
+    "ghcr.io/devcontainers/features/node:1": { "version": "24", "installPnpm": true },
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "pnpm install && pnpm astro telemetry disable",
+  "forwardPorts": [4321, 8787],
+  "portsAttributes": {
+    "4321": { "label": "Astro Dev", "onAutoForward": "notify" },
+    "8787": { "label": "Wrangler Dev", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "usernamehw.errorlens",
+        "YoavBls.pretty-ts-errors"
+      ],
+      "settings": {
+        "editor.bracketPairColorization.enabled": true,
+        "editor.cursorBlinking": "expand",
+        "editor.fontFamily": "'Cascadia Code', Operator Mono, Consolas, 'Courier New', monospace",
+        "editor.fontLigatures": true,
+        "editor.fontSize": 13,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.inlayHints.enabled": "offUnlessPressed",
+        "editor.inlineSuggest.enabled": true,
+        "editor.linkedEditing": true,
+        "editor.quickSuggestions": { "strings": true },
+        "editor.stickyScroll.enabled": true,
+        "editor.stickyScroll.maxLineCount": 2,
+        "editor.suggestSelection": "first",
+        "editor.wordWrap": "on",
+
+        "tailwindCSS.includeLanguages": { "plaintext": "html", "Svelte": "html" },
+
+        "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
+        "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+      }
     }
   },
-  "postCreateCommand": "pnpm install",
-  "forwardPorts": [4321],
-  "customizations": {}
+  "mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"],
+  "remoteEnv": { "NODE_ENV": "development" }
 }
