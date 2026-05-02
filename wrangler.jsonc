@@ -1,7 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
+  "main": "@astrojs/cloudflare/entrypoints/server",
   "name": "qr-code",
-  "compatibility_date": "2026-04-01",
+  "compatibility_date": "2026-04-21",
+  "compatibility_flags": ["nodejs_compat"],
   "env": {
     "production": {},
   },
