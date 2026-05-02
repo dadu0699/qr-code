@@ -5,5 +5,5 @@
   "compatibility_date": "2026-04-21",
   "compatibility_flags": ["nodejs_compat"],
   "assets": { "directory": "./dist/client" },
-  "env": { "production": {} },
+  "env": {},
 }
