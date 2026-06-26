@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@layouts/*": ["./src/layouts/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@lib/*": ["./src/lib/*"]
     },
     "verbatimModuleSyntax": true,
     "plugins": [{ "name": "@astrojs/ts-plugin" }]
