@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@astrojs/check':
-        specifier: 0.9.9
-        version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.4)(typescript@6.0.3)
       '@astrojs/cloudflare':
         specifier: 13.7.0
         version: 13.7.0(@types/node@26.0.1)(astro@6.4.8(@types/node@26.0.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.2)(yaml@2.9.0))(jiti@2.7.0)(lightningcss@1.32.0)(workerd@1.20260625.1)(wrangler@4.105.0)(yaml@2.9.0)
@@ -30,6 +27,9 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
     devDependencies:
+      '@astrojs/check':
+        specifier: 0.9.9
+        version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.4)(typescript@6.0.3)
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
