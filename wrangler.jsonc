@@ -11,7 +11,7 @@
   // dashboard) with your production domain(s), e.g. "https://qr.example.com".
   "vars": { "ALLOWED_ORIGINS": "" },
   "observability": {
-    "enabled": false,
+    "enabled": true,
     "head_sampling_rate": 1,
     "logs": {
       "enabled": true,
