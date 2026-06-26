@@ -16,12 +16,12 @@ To install the required dependencies, use the command `pnpm install`.
 
 Below are the available scripts for this project:
 
-- **dev:** Initializes the application's development environment.
-- **build:** Generates a production-ready version of the application.
-- **preview:** Previews the application within a development environment.
-- **astro:** A command associated with the Astro framework.
-- **functions:** Executes wrangler for pages in development mode.
-- **publish:** Builds the application and deploys the pages using wrangler.
+- **dev / start:** Initializes the application's development environment.
+- **build:** Type-checks and generates a production-ready version of the application.
+- **preview:** Builds the application and serves it locally with Wrangler.
+- **publish:** Builds the application and deploys it to Cloudflare with Wrangler.
+- **format:** Formats the codebase with Prettier.
+- **astro / wrangler:** Pass-through commands for the Astro and Wrangler CLIs.
 
 ```bash
 # Install dependencies
@@ -31,8 +31,8 @@ pnpm install
 pnpm dev
 pnpm build
 pnpm preview
-pnpm astro
 pnpm publish
+pnpm format
 ```
 
 ## Technologies Used
@@ -40,7 +40,15 @@ pnpm publish
 - **Node.js v24:** Platform for JavaScript execution.
 - **pnpm:** Package manager for Node.js.
 - **Astro 6:** Web framework.
-- **Cloudflare:** SSR adapter used with Cloudflare Pages functions.
+- **Cloudflare Workers:** SSR runtime, via the `@astrojs/cloudflare` adapter.
+
+## Configuration
+
+| Variable          | Description                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| `ALLOWED_ORIGINS` | Comma-separated origins allowed to call the API cross-origin. Empty means same-origin only. |
+
+Defined in `wrangler.jsonc` (`vars`); override per environment as needed.
 
 ## Server Functions
 
