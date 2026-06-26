@@ -15,9 +15,12 @@ interface QRCodeRequest {
 
 const ALLOWED_METHODS = 'POST, OPTIONS';
 
+// In the `qrcode` API, `dark` is the foreground (the modules) and `light` is
+// the background. Default to conventional dark-on-light for maximum scanner
+// compatibility; the UI overrides this with its own theme colors.
 const defaultColor = {
-  dark: '#FFFFFF',
-  light: '#3685FF',
+  dark: '#000000',
+  light: '#FFFFFF',
 };
 
 const MAX_URL_LENGTH = 2048;
