@@ -6,6 +6,10 @@
   "compatibility_flags": ["nodejs_compat"],
   "assets": { "directory": "./dist/client" },
   "env": {},
+  // Comma-separated list of origins allowed to call the API cross-origin.
+  // Empty = same-origin only. Override per environment (e.g. in the Cloudflare
+  // dashboard) with your production domain(s), e.g. "https://qr.example.com".
+  "vars": { "ALLOWED_ORIGINS": "" },
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,
