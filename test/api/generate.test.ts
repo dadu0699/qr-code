@@ -67,6 +67,12 @@ describe('POST /api/qr/generate — validation', () => {
     expect(response.status).toBe(400);
     expect(await errorMessage(response)).toBe('Invalid dark color');
   });
+
+  it('rejects an invalid light color', async () => {
+    const response = await POST(postJson({ url: 'https://astro.build', color: { light: 'azul' } }));
+    expect(response.status).toBe(400);
+    expect(await errorMessage(response)).toBe('Invalid light color');
+  });
 });
 
 describe('POST /api/qr/generate — success', () => {
