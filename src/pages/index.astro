@@ -8,6 +8,7 @@ import Layout from '@layouts/Layout.astro';
       <div
         id="qr-code-result"
         class="mx-auto flex aspect-square w-full items-center justify-center rounded-lg bg-gray-800 p-0.5"
+        aria-live="polite"
       >
       </div>
 
@@ -19,6 +20,7 @@ import Layout from '@layouts/Layout.astro';
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -32,58 +34,78 @@ import Layout from '@layouts/Layout.astro';
         <input
           id="url"
           type="url"
+          required
           placeholder="https://..."
-          class="bg-gray-850 w-full rounded-md border border-gray-700 px-4 py-2 text-white placeholder-gray-500"
+          aria-describedby="qr-code-error"
+          class="bg-gray-850 w-full rounded-md border border-gray-700 px-4 py-2 text-white placeholder-gray-400"
         />
+        <p id="qr-code-error" class="hidden text-sm text-red-400" role="alert"></p>
       </form>
 
-      <p class="mt-1 text-center text-sm text-gray-500">Application created in midudev live</p>
+      <p class="mt-1 text-center text-sm text-gray-400">Application created in midudev live</p>
     </div>
   </main>
 </Layout>
 
 <script>
-  const qrCodeForm = document.querySelector('#qr-code-form');
-  const qrCodeResult = document.querySelector('#qr-code-result');
+  const qrCodeForm = document.querySelector<HTMLFormElement>('#qr-code-form');
+  const qrCodeResult = document.querySelector<HTMLDivElement>('#qr-code-result');
+  const qrCodeError = document.querySelector<HTMLParagraphElement>('#qr-code-error');
+  const urlInput = document.querySelector<HTMLInputElement>('#url');
 
-  if (!qrCodeForm || !qrCodeResult) {
-    console.error('QR Code form or result element not found');
-    throw new Error('QR Code form or result element not found');
+  if (!qrCodeForm || !qrCodeResult || !qrCodeError || !urlInput) {
+    throw new Error('QR Code form elements not found');
   }
 
-  qrCodeForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const showError = (message: string) => {
+    qrCodeError.textContent = message;
+    qrCodeError.classList.remove('hidden');
+  };
 
-    const form = e.target as HTMLFormElement | null;
-    const input = form?.querySelector('input[type="url"]') as HTMLInputElement | null;
+  const clearError = () => {
+    qrCodeError.textContent = '';
+    qrCodeError.classList.add('hidden');
+  };
 
-    if (!input) {
-      console.error('Input element not found');
+  const renderQrCode = (svg: string, url: string) => {
+    // Render the SVG via an <img> data URI rather than innerHTML: browsers do not
+    // execute scripts in images, and `alt` provides screen-reader text.
+    const image = document.createElement('img');
+    image.src = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+    image.alt = `QR code for ${url}`;
+    image.className = 'h-full w-full';
+    qrCodeResult.replaceChildren(image);
+  };
+
+  qrCodeForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearError();
+
+    let url: URL;
+    try {
+      url = new URL(urlInput.value);
+    } catch {
+      showError('Please enter a valid URL, including http:// or https://.');
       return;
     }
 
-    const url = new URL(input.value);
+    try {
+      const response = await fetch('/api/qr/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: url.toString(),
+          color: { dark: '#FFFFFF', light: '#2B2B2B' },
+        }),
+      });
 
-    fetch('/api/qr/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        url: url.toString(),
-        color: {
-          dark: '#FFFFFF',
-          light: '#2B2B2B',
-        },
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-        return response.text();
-      })
-      .then((svg) => {
-        qrCodeResult.innerHTML = svg;
-      })
-      .catch((err) => console.error(err));
+      if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+      const svg = await response.text();
+      renderQrCode(svg, url.toString());
+    } catch (err) {
+      console.error(err);
+      showError('Could not generate the QR code. Please try again.');
+    }
   });
 </script>
