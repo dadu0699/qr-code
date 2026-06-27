@@ -48,6 +48,9 @@ importers:
       eslint-plugin-astro:
         specifier: 2.1.1
         version: 2.1.1(@typescript-eslint/parser@8.62.0(eslint@10.5.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0))
+      globals:
+        specifier: 17.7.0
+        version: 17.7.0
       prettier:
         specifier: 3.8.4
         version: 3.8.4
