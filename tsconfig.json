@@ -4,11 +4,13 @@
     "paths": {
       "@layouts/*": ["./src/layouts/*"],
       "@styles/*": ["./src/styles/*"],
-      "@lib/*": ["./src/lib/*"]
+      "@lib/*": ["./src/lib/*"],
+      "@app-types/*": ["./src/types/*"],
+      "@scripts/*": ["./src/scripts/*"]
     },
     "verbatimModuleSyntax": true,
     "plugins": [{ "name": "@astrojs/ts-plugin" }]
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "coverage"]
 }
