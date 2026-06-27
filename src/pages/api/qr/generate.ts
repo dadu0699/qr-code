@@ -3,15 +3,9 @@ import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
 import QRCode from 'qrcode';
 
-import { buildCorsHeaders, preflightResponse } from '@lib/http';
+import type { QRCodeRequest } from '@app-types/qr';
 
-interface QRCodeRequest {
-  url: string;
-  color?: {
-    dark?: string;
-    light?: string;
-  };
-}
+import { buildCorsHeaders, preflightResponse } from '@lib/http';
 
 const ALLOWED_METHODS = 'POST, OPTIONS';
 
